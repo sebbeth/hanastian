@@ -6,7 +6,7 @@
     color: #4a4a4a;
     min-width: 100vw;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: monospace;
 }
@@ -21,4 +21,47 @@
     font-size: xx-large;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: lighter;
+}
+
+.mover {
+    padding: 2;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.mover-on {
+    margin-top: 3rem;
+    opacity: 1;
+}
+
+@keyframes balloon {
+    0% {
+        transform: rotate(-8deg) translateY(0);
+    }
+    50% {
+        transform: rotate(4deg) translateY(-10px);
+    }
+    100% {
+        transform: rotate(-8deg) translateY(0);
+    }
+}
+
+.container {
+    padding: 2;
+}
+
+.floater {
+    position: relative;
+    display: flex;
+    box-shadow: 4px 4px 9px -4px rgba(0, 0, 0, 0.5);
+    box-shadow: black;
+    animation: balloon 7s ease-in-out infinite;
+    background-color: chocolate;
+    padding: 1rem;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 10rem;
 }
