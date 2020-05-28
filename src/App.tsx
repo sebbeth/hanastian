@@ -5,34 +5,54 @@ import moment from "moment";
 import { setInterval } from 'timers';
 
 function App() {
-  // 2014-09-25 10:15:00
   const [counter, setCounter] = React.useState("");
+  const start = moment([2014, 9, 25]);
   const [on, setOn] = React.useState(false);
 
-  setInterval(function () {
-    setCounter(moment([2014, 9, 25]).fromNow());
-  }, 1000);
+  function incrementCounter() {
+    const diffTime = moment().unix() - start.unix();
+    const duration = moment.duration(diffTime, 'seconds');
+    setCounter(`${duration.years()} years, 
+    ${duration.months()} months,
+    ${duration.days()} days,
+    ${duration.hours()} hours,
+    ${duration.minutes()} minutes,
+    ${duration.seconds()} seconds
+    `);
+  }
+
+  React.useEffect(() => {
+
+    setInterval(function () {
+      incrementCounter();
+    }, 1000);
+
+    setTimeout(() => {
+      setOn(true);
+    }, 3000);
+
+  }, []);
+
 
   return (
     <div className="App">
-      <div className="heading">
-      </div>
-      {/* <div className="counter">
-        {counter}
-      </div> */}
-
-
-      <div className={on ? "mover mover-on" : "mover"}>
-        <div className="floater">
-          :D
-        </div>
-      </div>
-        <button onClick={() => setOn(!on)}>Switch</button>
+      <div className="fadeIn" />
       <div className="container">
-        {/* <div className="floater">
-    ?
-  </div> */}
+        <img className={on ? "graphic visible" : "graphic hidden"} src="/blob_people.png" alt="blob people" />
       </div>
+      <div className="counter">
+        {counter}
+      </div>
+      <div className="heading" onClick={() => setOn(!on)}>
+        Hanastian
+      </div>
+
+      {/* <div className="floater">
+          :D
+        </div> */}
+
+
+
     </div>
   );
 }

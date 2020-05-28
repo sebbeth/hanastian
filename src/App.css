@@ -1,37 +1,65 @@
 .App {
-    background: rgb(255, 226, 219);
-    background: radial-gradient(circle, rgba(255, 226, 219, 1) 10%, rgba(254, 255, 219, 1) 100%);
+    background: rgb(243, 233, 207);
+    background: radial-gradient(circle, rgb(251, 209, 199) 10%, rgb(243, 233, 207) 100%);
     min-height: 100vh;
-    display: flex;
+    display: grid;
+    grid-template-rows: 60vh 20vh 20vh;
+    justify-items: center;
     color: #4a4a4a;
     min-width: 100vw;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     font-family: monospace;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fadeIn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(243, 233, 207);
+    animation: fade-in 3s ease-in-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+.graphic {
+    transition: all 1s ease;
+    position: relative;
+    padding: 1rem 0;
+    height: 35vh;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translate(0px, 5rem);
+}
+
+.visible {
+    opacity: 1;
 }
 
 .counter {
     font-size: x-large;
+    display: flex;
+    text-align: center;
+    align-self: center;
     font-weight: bold;
 }
 
 .heading {
-    padding-bottom: 4rem;
     font-size: xx-large;
-    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
     font-weight: lighter;
-}
-
-.mover {
-    padding: 2;
-    transition: all 0.5s ease;
-    opacity: 0;
-}
-
-.mover-on {
-    margin-top: 3rem;
-    opacity: 1;
 }
 
 @keyframes balloon {
@@ -47,7 +75,8 @@
 }
 
 .container {
-    padding: 2;
+    display: flex;
+    align-items: center;
 }
 
 .floater {
